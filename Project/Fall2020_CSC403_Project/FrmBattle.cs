@@ -128,6 +128,15 @@ namespace Fall2020_CSC403_Project {
         Close();
       }
     }
+    
+    private void btnHeal_Click(object sender, EventArgs e) {
+      // If the player is NOT at max health, heal
+      if (!(player.Health == player.MaxHealth)) {
+        player.AlterHealth(4);
+        UpdateHealthBars();
+      }
+    }
+
 
     private void EnemyDamage(int amount) {
       enemy.AlterHealth((amount * healthMultEnemy));
