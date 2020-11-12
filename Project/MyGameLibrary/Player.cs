@@ -13,9 +13,8 @@ namespace Fall2020_CSC403_Project.code {
     public Player(Vector2 initPos, Collider collider) : base(initPos, collider) {
       Experience = 0;
       RequiredLevelExperience = 50;
-      items.Add(new Item("Health Potion", "item", 2));
-      items.Add(new Item("Health Potion", "item", 2));
-      items.Add(new Item("Health Potion", "item", 2));
+      items.Add(new Item("Health Potion", "Util", 2));
+      items.Add(new Item("Health Potion", "Util", 2));
     }
 
     public void AlterExperience(int amount) {
@@ -35,7 +34,7 @@ namespace Fall2020_CSC403_Project.code {
         foreach (Item item in items)
         {
           // Use the first one found and remove it from the player's inventory; break out of the loop
-          if (item.Type == "item")
+          if (item.Type == "Util")
           {
             AlterHealth(item.Value);
             items.Remove(item);

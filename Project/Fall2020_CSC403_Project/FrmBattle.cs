@@ -109,7 +109,7 @@ namespace Fall2020_CSC403_Project {
       // Look through the player's item inventory
       foreach (Item item in player.items) {
         // If there's a healing item, increase the count
-        if (item.Type == "item") {
+        if (item.Type == "Util") {
          count += 1;
         }
 
