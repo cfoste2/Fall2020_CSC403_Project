@@ -79,6 +79,10 @@ namespace Fall2020_CSC403_Project {
         picPlayer2.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player_lohp;
         link.lowHP = true;
       }
+      else
+      {
+        link.lowHP = false;
+      }
     }
 
     private void UpdateExpBars() {
