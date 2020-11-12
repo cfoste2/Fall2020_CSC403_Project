@@ -10,6 +10,10 @@ namespace Fall2020_CSC403_Project {
   public partial class FrmLevel : Form {
     private Player player;
 
+    private Item rock = new Item("Rock", "Obj", 1);
+    private Item potion = new Item("Health Potion", "Util", 2);
+    private Item award = new Item("Award", "Token", 500); 
+
     private Enemy enemyPoisonPacket;
     private Enemy bossKoolaid;
     private Enemy enemyCheeto;
@@ -48,6 +52,10 @@ namespace Fall2020_CSC403_Project {
       bossKoolaid.Color = Color.Red;
       enemyPoisonPacket.Color = Color.Green;
       enemyCheeto.Color = Color.FromArgb(255, 245, 161);
+
+      bossKoolaid.Drop = award;
+      enemyPoisonPacket.Drop = potion;
+      enemyCheeto.Drop = rock;
 
       walls = new Character[NUM_WALLS];
       for (int w = 0; w < NUM_WALLS; w++) {
@@ -116,6 +124,13 @@ namespace Fall2020_CSC403_Project {
       if (HitAChar(player, bossKoolaid)) {
         Fight(bossKoolaid);
       }
+      /*
+      // check collision with sword (upgrade)
+      if (HitASword(player))
+       {
+          picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.armorSword;
+            }
+      */
 
       // update player's picture box
       picPlayer.Location = new Point((int)player.Position.x, (int)player.Position.y);
@@ -144,7 +159,8 @@ namespace Fall2020_CSC403_Project {
     private void Fight(Enemy enemy) {
       Results link = new Results();
       link.HealthWarn += LowHealthChange;
-      link.Setup();
+      link.EnemyDefeated += ItemDrop;
+      link.Setup(enemy);
       player.ResetMoveSpeed();
       player.MoveBack();
       frmBattle = FrmBattle.GetInstance(enemy, ref link);
@@ -154,9 +170,15 @@ namespace Fall2020_CSC403_Project {
         frmBattle.SetupForBossBattle();
       }
       
-      // remove picture of enemy
-      this.Controls.Remove(this.enemyPictureBoxMap[enemy]);
+
     }
+
+    private void ItemDrop(Enemy defeated)
+      {
+        player.items.Add(defeated.Drop);
+        // remove picture of enemy
+        this.Controls.Remove(this.enemyPictureBoxMap[defeated]);
+      }
 
     private void LowHealthChange(bool low) {
       if (low) {
