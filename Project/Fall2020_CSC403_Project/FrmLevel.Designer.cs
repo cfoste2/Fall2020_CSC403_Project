@@ -298,6 +298,9 @@
             picPlayer.TabIndex = 0;
             picPlayer.TabStop = false;
             // 
+            // picPlayerBackup
+            // 
+            picPlayerBackup.BackgroundImage = picPlayer.BackgroundImage;
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Lime;
