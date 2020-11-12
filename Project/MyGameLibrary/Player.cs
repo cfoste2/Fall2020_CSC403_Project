@@ -17,7 +17,7 @@ namespace Fall2020_CSC403_Project.code {
 
     public void AlterExperience(int amount) {
       Experience += amount;
-      items.Add(new Item("Sword", "weapon", 1)); // toy example to test it out
+      //items.Add(new Item("Sword", "weapon", 1)); // toy example to test it out
     }
 
     public void ScaleLevelExperience(int amount) {
