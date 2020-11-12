@@ -93,13 +93,15 @@ namespace Fall2020_CSC403_Project {
          try
          {
              picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.armorSword;
-             FrmBattle.picPlayer2.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.armorSword;
+             picPlayerBackup.BackgroundImage = picPlayer.BackgroundImage;
 
          }
          catch (NullReferenceException ex)
                 {
 
                 }
+         
+         // Multiplies with the player's base hit damage
          FrmBattle.healthMultEnemy = 2;
          this.Controls.Remove(this.pictureBox2);
       }
@@ -114,13 +116,6 @@ namespace Fall2020_CSC403_Project {
       if (HitAChar(player, bossKoolaid)) {
         Fight(bossKoolaid);
       }
-      /*
-      // check collision with sword (upgrade)
-      if (HitASword(player))
-       {
-          picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.armorSword;
-            }
-      */
 
       // update player's picture box
       picPlayer.Location = new Point((int)player.Position.x, (int)player.Position.y);
@@ -163,14 +158,15 @@ namespace Fall2020_CSC403_Project {
       this.Controls.Remove(this.enemyPictureBoxMap[enemy]);
     }
 
-    private void LowHealthChange(bool low)
-    {
-      if (low)
-            {
-                picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player_lohp;
-            }
-
-        }
+    private void LowHealthChange(bool low) {
+      if (low) {
+        picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player_lohp;
+      }
+      else { 
+        // Change our player to the original image they selected
+        picPlayer.BackgroundImage = picPlayerBackup.BackgroundImage;
+      }
+    }
 
     private void FrmLevel_KeyDown(object sender, KeyEventArgs e) {
       switch (e.KeyCode) {
@@ -244,6 +240,11 @@ namespace Fall2020_CSC403_Project {
             m.ShowDialog();
         }
 
+        private void inventory_click(object sender, EventArgs e)
+        {
+            FrmInventory i = new FrmInventory();
+            i.ShowDialog();
+        }
         
     }
 }

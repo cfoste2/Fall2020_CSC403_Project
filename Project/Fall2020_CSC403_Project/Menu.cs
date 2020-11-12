@@ -31,8 +31,8 @@ namespace Fall2020_CSC403_Project
             try
             {
                 FrmLevel.picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player;
-                FrmBattle.picPlayer2.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player;
-                
+                FrmLevel.picPlayerBackup.BackgroundImage = FrmLevel.picPlayer.BackgroundImage;
+
             }
             catch (NullReferenceException ex)
             {
@@ -47,7 +47,7 @@ namespace Fall2020_CSC403_Project
             try
             {
                 FrmLevel.picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player2;
-                FrmBattle.picPlayer2.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player2;
+                FrmLevel.picPlayerBackup.BackgroundImage = FrmLevel.picPlayer.BackgroundImage;
                 this.Hide();
             }
             catch (NullReferenceException ex)
@@ -63,7 +63,7 @@ namespace Fall2020_CSC403_Project
             try
             {
                 FrmLevel.picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player3;
-                FrmBattle.picPlayer2.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player3;
+                FrmLevel.picPlayerBackup.BackgroundImage = FrmLevel.picPlayer.BackgroundImage;
             }
             catch (NullReferenceException ex)
             {
@@ -78,7 +78,7 @@ namespace Fall2020_CSC403_Project
             try
             {
                 FrmLevel.picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player5;
-                FrmBattle.picPlayer2.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player5;
+                FrmLevel.picPlayerBackup.BackgroundImage = FrmLevel.picPlayer.BackgroundImage;
                 this.Hide();
             }
             catch (NullReferenceException ex)
@@ -93,7 +93,7 @@ namespace Fall2020_CSC403_Project
             try
             {
                 FrmLevel.picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player6;
-                FrmBattle.picPlayer2.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player6;
+                FrmLevel.picPlayerBackup.BackgroundImage = FrmLevel.picPlayer.BackgroundImage;
                 this.Hide();
             }
             catch (NullReferenceException ex)

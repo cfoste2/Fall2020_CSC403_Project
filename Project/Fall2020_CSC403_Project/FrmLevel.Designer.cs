@@ -45,7 +45,9 @@
             this.picWall3 = new System.Windows.Forms.PictureBox();
             this.picBossKoolAid = new System.Windows.Forms.PictureBox();
             picPlayer = new System.Windows.Forms.PictureBox();
+            picPlayerBackup = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picWall11)).BeginInit();
@@ -313,6 +315,21 @@
             this.button2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmLevel_KeyUp);
             this.button2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FrmLevel_PreviewKeyDown);
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.Lime;
+            this.button3.Location = new System.Drawing.Point(1288, 16);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(97, 46);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Inventory";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.inventory_click);
+            this.button3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLevel_KeyDown);
+            this.button3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button1_KeyPress);
+            this.button3.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmLevel_KeyUp);
+            this.button3.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FrmLevel_PreviewKeyDown);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
@@ -341,6 +358,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.picWall11);
             this.Controls.Add(this.picWall2);
             this.Controls.Add(this.picWall8);
@@ -359,6 +377,8 @@
             this.Controls.Add(this.picWall3);
             this.Controls.Add(this.picBossKoolAid);
             this.Controls.Add(picPlayer);
+            // Saves a backup of what the player selected in "Menu.cs"
+            this.Controls.Add(picPlayerBackup);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmLevel";
@@ -413,9 +433,12 @@
     private System.Windows.Forms.PictureBox picWall2;
     private System.Windows.Forms.PictureBox picWall11;
     private System.Windows.Forms.Button button2;
+    private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
     public static System.Windows.Forms.PictureBox picPlayer;
+    // Saves a backup of what the player selected in "Menu.cs"
+    public static System.Windows.Forms.PictureBox picPlayerBackup;
     }
 }
 
