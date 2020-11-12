@@ -40,6 +40,9 @@ namespace Fall2020_CSC403_Project {
       
       // show player level
       UpdatePlayerLevel();
+      
+      // show player healing items
+      UpdatePlayerInventoryDisplay();
     }
 
     public void SetupForBossBattle() {
@@ -94,7 +97,21 @@ namespace Fall2020_CSC403_Project {
     private void UpdatePlayerLevel() {
       lblPlayerLevel.Text = player.Level.ToString();
     }
+    
+    private void UpdatePlayerInventoryDisplay() {
+      int count = 0;
+      lblHealingItemsCount.Text = "0";
+      // Look through the player's item inventory
+      foreach (Item item in player.items) {
+        // If there's a healing item, increase the count
+        if (item.Type == "item") {
+         count += 1;
+        }
 
+        lblHealingItemsCount.Text = count.ToString();
+      }
+    }
+    
     private void btnAttack_Click(object sender, EventArgs e) {
       player.OnAttack(-4);
       if (enemy.Health > 0) {
@@ -132,6 +149,7 @@ namespace Fall2020_CSC403_Project {
     private void btnHeal_Click(object sender, EventArgs e) {
       player.HealPlayerWithItem();
       UpdateHealthBars();
+      UpdatePlayerInventoryDisplay();
     }
 
 

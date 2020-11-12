@@ -32,6 +32,8 @@ namespace Fall2020_CSC403_Project {
             this.lblEnemyHealthFull = new System.Windows.Forms.Label();
             this.PlayerExperience = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.lblHealingItems = new System.Windows.Forms.Label();
+            this.lblHealingItemsCount = new System.Windows.Forms.Label();
             this.lblHealth = new System.Windows.Forms.Label();
             this.lblExperience = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
@@ -123,6 +125,28 @@ namespace Fall2020_CSC403_Project {
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(229, 23);
             this.label3.TabIndex = 8;
+            // 
+            // lblHealingItems
+            // 
+            this.lblHealingItems.BackColor = System.Drawing.Color.Transparent;
+            this.lblHealingItems.ForeColor = System.Drawing.Color.White;
+            this.lblHealingItems.Location = new System.Drawing.Point(261, 431);
+            this.lblHealingItems.Name = "lblHealingItems";
+            this.lblHealingItems.Size = new System.Drawing.Size(84, 48);
+            this.lblHealingItems.TabIndex = 11;
+            this.lblHealingItems.Text = "Healing Items";
+            this.lblHealingItems.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblHealingItemsCount
+            // 
+            this.lblHealingItemsCount.BackColor = System.Drawing.Color.Black;
+            this.lblHealingItemsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHealingItemsCount.ForeColor = System.Drawing.Color.White;
+            this.lblHealingItemsCount.Location = new System.Drawing.Point(275, 481);
+            this.lblHealingItemsCount.Name = "lblHealingItemsCount";
+            this.lblHealingItemsCount.Size = new System.Drawing.Size(56, 31);
+            this.lblHealingItemsCount.TabIndex = 11;
+            this.lblHealingItemsCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblHealth
             // 
@@ -222,6 +246,8 @@ namespace Fall2020_CSC403_Project {
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PlayerExperience);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblHealingItems);
+            this.Controls.Add(this.lblHealingItemsCount);
             this.Controls.Add(this.lblHealth);
             this.Controls.Add(this.lblExperience);
             this.Controls.Add(this.lblLevel);
@@ -253,6 +279,8 @@ namespace Fall2020_CSC403_Project {
     private System.Windows.Forms.Label lblEnemyHealthFull;
     private System.Windows.Forms.Label PlayerExperience;
     private System.Windows.Forms.Label label3;
+    private System.Windows.Forms.Label lblHealingItems;
+    private System.Windows.Forms.Label lblHealingItemsCount;
     private System.Windows.Forms.Label lblHealth;
     private System.Windows.Forms.Label lblExperience;
     private System.Windows.Forms.Label lblLevel;
