@@ -11,7 +11,7 @@ namespace Fall2020_CSC403_Project {
     private Player player;
 
     private Item rock = new Item("Rock", "Obj", 1);
-    private Item potion = new Item("Potion", "Util", 22);
+    private Item potion = new Item("Health Potion", "Util", 2);
     private Item award = new Item("Award", "Token", 500); 
 
     private Enemy enemyPoisonPacket;
