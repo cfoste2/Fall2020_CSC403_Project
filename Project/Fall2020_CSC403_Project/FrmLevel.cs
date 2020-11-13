@@ -222,28 +222,36 @@ namespace Fall2020_CSC403_Project {
 
     }
 
-        private void picPlayer_Click(object sender, EventArgs e)
-        {
+    private void picPlayer_Click(object sender, EventArgs e)
+    {
 
-        }
+    }
 
-        private void button1_KeyPress(object sender, KeyPressEventArgs e)
-        {
+    private void button1_KeyPress(object sender, KeyPressEventArgs e)
+    {
            
             
-        }
-
-        private void FrmLevel_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            e.IsInputKey = true;
-        }
-
-        private void menu_click(object sender, EventArgs e)
-        {
-            Menu m = new Menu(); //this is the change, code for redirect  
-            m.ShowDialog();
-        }
-
-        
     }
+
+    private void FrmLevel_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+    {
+        e.IsInputKey = true;
+    }
+
+    private void menu_click(object sender, EventArgs e)
+    {
+        Menu m = new Menu(); //this is the change, code for redirect  
+        m.ShowDialog();
+    }
+
+    public void inventory_click(object sender, EventArgs e)
+    {
+      FrmInventory frm = new FrmInventory();
+      frm.FrmInventory_Load();
+      frm.RefreshInventory();
+      frm.Show();
+      frm.ShowDialog();
+    }
+
+  }
 }
