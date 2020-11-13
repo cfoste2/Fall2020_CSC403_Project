@@ -9,6 +9,9 @@ namespace Fall2020_CSC403_Project.code {
     public int Experience;
     public int RequiredLevelExperience;
     public List<Item> items = new List<Item>();
+    public Item equippedWep = null;
+    public Item equippedArmor = null;
+    public int armor = 0;
 
     public Player(Vector2 initPos, Collider collider) : base(initPos, collider) {
       Experience = 0;
@@ -17,7 +20,7 @@ namespace Fall2020_CSC403_Project.code {
 
     public void AlterExperience(int amount) {
       Experience += amount;
-      //items.Add(new Item("Sword", "weapon", 1)); // toy example to test it out
+      items.Add(new Item("Health Potion", "potion", 5));
     }
 
     public void ScaleLevelExperience(int amount) {

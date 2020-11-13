@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Fall2020_CSC403_Project.code {
   public class BattleCharacter : Character {
-    public float Health { get; private set; }
+    public float Health { get; set; }
     public int MaxHealth { get; private set; }
     public int Level { get; private set; }
-    private float strength;
+    public float strength;
 
     public event Action<int> AttackEvent;
 
