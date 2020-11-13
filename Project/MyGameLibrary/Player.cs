@@ -42,6 +42,10 @@ namespace Fall2020_CSC403_Project.code {
             AlterHealth(item.Value);
             items.Remove(item);
           }
+          else
+          {
+            continue;
+          }
           break;
         }
       }
