@@ -12,20 +12,23 @@ namespace Fall2020_CSC403_Project {
 
     private Item rock = new Item("Rock", "Obj", 1);
     private Item potion = new Item("Health Potion", "Util", 2);
-    private Item award = new Item("Award", "Token", 500); 
+    private Item award = new Item("Award", "Token", 500);
+    private Item steelsword = new Item("Steel Sword", "weapon", 5);
 
     private Enemy enemyPoisonPacket;
     private Enemy bossKoolaid;
     private Enemy enemyCheeto;
     private Character[] walls;
-    
+
     // Adds a sword to the map the player can pick up and equip
     private Character sword;
 
     private DateTime timeBegin;
     private FrmBattle frmBattle;
-    
+
     private Dictionary<Enemy, PictureBox> enemyPictureBoxMap = new Dictionary<Enemy, PictureBox>();
+
+    public FrmInventory frmInven = null;
 
     public FrmLevel() {
       this.KeyPreview = true;
@@ -44,7 +47,7 @@ namespace Fall2020_CSC403_Project {
       enemyPictureBoxMap.Add(bossKoolaid, picBossKoolAid);
       enemyPictureBoxMap.Add(enemyPoisonPacket, picEnemyPoisonPacket);
       enemyPictureBoxMap.Add(enemyCheeto, picEnemyCheeto);
-      
+
       bossKoolaid.Img = picBossKoolAid.BackgroundImage;
       enemyPoisonPacket.Img = picEnemyPoisonPacket.BackgroundImage;
       enemyCheeto.Img = picEnemyCheeto.BackgroundImage;
@@ -53,9 +56,9 @@ namespace Fall2020_CSC403_Project {
       enemyPoisonPacket.Color = Color.Green;
       enemyCheeto.Color = Color.FromArgb(255, 245, 161);
 
+      enemyPoisonPacket.Drop = new Item("Iron Armor", "armor", 1);
+      enemyCheeto.Drop = new Item("Iron Sword", "weapon", 1);
       bossKoolaid.Drop = award;
-      enemyPoisonPacket.Drop = potion;
-      enemyCheeto.Drop = rock;
 
       walls = new Character[NUM_WALLS];
       for (int w = 0; w < NUM_WALLS; w++) {
@@ -98,20 +101,20 @@ namespace Fall2020_CSC403_Project {
 
       if (HitSword(player, sword))
       {
-         try
-         {
-             picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.armorSword;
-             picPlayerBackup.BackgroundImage = picPlayer.BackgroundImage;
+        try
+        {
+          sword.Drop = steelsword;
+          player.items.Add(sword.Drop);
+          sword.Hide();
+        }
+        catch (NullReferenceException ex)
+        {
 
-         }
-         catch (NullReferenceException ex)
-                {
-
-                }
+        }
          
          // Multiplies with the player's base hit damage
-         FrmBattle.healthMultEnemy = 2;
-         this.Controls.Remove(this.pictureBox2);
+        FrmBattle.healthMultEnemy = 1;
+        this.Controls.Remove(this.pictureBox2);
       }
 
       // check collision with enemies
@@ -124,13 +127,6 @@ namespace Fall2020_CSC403_Project {
       if (HitAChar(player, bossKoolaid)) {
         Fight(bossKoolaid);
       }
-      /*
-      // check collision with sword (upgrade)
-      if (HitASword(player))
-       {
-          picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.armorSword;
-            }
-      */
 
       // update player's picture box
       picPlayer.Location = new Point((int)player.Position.x, (int)player.Position.y);
@@ -149,13 +145,13 @@ namespace Fall2020_CSC403_Project {
 
     private bool HitSword(Character you, Character sword)
     {
-        return you.Collider.Intersects(sword.Collider);
+      return you.Collider.Intersects(sword.Collider);
     }
 
     private bool HitAChar(Character you, Character other) {
       return you.Collider.Intersects(other.Collider);
     }
-    
+
     private void Fight(Enemy enemy) {
       Results link = new Results();
       link.HealthWarn += LowHealthChange;
@@ -169,16 +165,16 @@ namespace Fall2020_CSC403_Project {
       if (enemy == bossKoolaid) {
         frmBattle.SetupForBossBattle();
       }
-      
+
 
     }
 
     private void ItemDrop(Enemy defeated)
-      {
-        player.items.Add(defeated.Drop);
-        // remove picture of enemy
-        this.Controls.Remove(this.enemyPictureBoxMap[defeated]);
-      }
+    {
+      player.items.Add(defeated.Drop);
+      // remove picture of enemy
+      this.Controls.Remove(this.enemyPictureBoxMap[defeated]);
+    }
 
     private void LowHealthChange(bool low) {
       if (low) {
@@ -193,41 +189,52 @@ namespace Fall2020_CSC403_Project {
     private void FrmLevel_KeyDown(object sender, KeyEventArgs e) {
       switch (e.KeyCode) {
         case Keys.Left:
+          this.frmInven = null;
           player.GoLeft();
           break;
 
         case Keys.Right:
+          this.frmInven = null;
           player.GoRight();
           break;
 
         case Keys.Up:
+          this.frmInven = null;
           player.GoUp();
           break;
 
         case Keys.Down:
+          this.frmInven = null;
           player.GoDown();
           break;
 
         case Keys.A:
+          this.frmInven = null;
           player.GoLeft();
           break;
 
         case Keys.D:
+          this.frmInven = null;
           player.GoRight();
           break;
 
         case Keys.W:
+          this.frmInven = null;
           player.GoUp();
           break;
 
         case Keys.S:
+          this.frmInven = null;
           player.GoDown();
           break;
 
         case Keys.E:
-          FrmInventory frm = new FrmInventory();
-          frm.FrmInventory_Load();
-          frm.Show();
+          if (this.frmInven == null) {
+            this.frmInven = new FrmInventory();
+            this.frmInven.FrmInventory_Load();
+            this.frmInven.Show();
+          }
+
           break;
 
         default:
@@ -240,33 +247,28 @@ namespace Fall2020_CSC403_Project {
 
     }
 
-        private void picPlayer_Click(object sender, EventArgs e)
-        {
+    private void picPlayer_Click(object sender, EventArgs e)
+    {
 
-        }
-
-        private void button1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           
-            
-        }
-
-        private void FrmLevel_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            e.IsInputKey = true;
-        }
-
-        private void menu_click(object sender, EventArgs e)
-        {
-            Menu m = new Menu(); //this is the change, code for redirect  
-            m.ShowDialog();
-        }
-
-        private void inventory_click(object sender, EventArgs e)
-        {
-            FrmInventory i = new FrmInventory();
-            i.ShowDialog();
-        }
-        
     }
+
+    private void button1_KeyPress(object sender, KeyPressEventArgs e)
+    {
+
+
+    }
+
+    private void FrmLevel_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+    {
+      e.IsInputKey = true;
+    }
+
+    private void menu_click(object sender, EventArgs e)
+    {
+      Menu m = new Menu(); //this is the change, code for redirect  
+      m.ShowDialog();
+    }
+
+
+  }
 }

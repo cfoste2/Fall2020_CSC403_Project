@@ -43,9 +43,9 @@ namespace Fall2020_CSC403_Project {
       
       // show player healing items
       UpdatePlayerInventoryDisplay();
-        }
+    }
 
-        public void SetupForBossBattle() {
+    public void SetupForBossBattle() {
       picBossBattle.Location = Point.Empty;
       picBossBattle.Size = ClientSize;
       picBossBattle.Visible = true;
@@ -120,7 +120,7 @@ namespace Fall2020_CSC403_Project {
     private void btnAttack_Click(object sender, EventArgs e) {
       player.OnAttack(-4);
       if (enemy.Health > 0) {
-        enemy.OnAttack(-2);
+        enemy.OnAttack(-3 + player.armor);
       }
 
       UpdateHealthBars();
@@ -145,10 +145,10 @@ namespace Fall2020_CSC403_Project {
             UpdateHealthBars();
             
           }
+        enemy.Hide();
         }
         link.running = false;
         instance = null;
-        enemy.Hide();
         Close();
       }
     }
