@@ -73,7 +73,7 @@ namespace Fall2020_CSC403_Project
         var lvi = new ListViewItem(row);
         lvi.Tag = item;
         bool TypeNotAlreadyEquipped = ((selectedItem.Type == "armor" && Game.player.equippedArmor == null) || (selectedItem.Type == "weapon" && Game.player.equippedWep == null));
-        if (selectedItem == item && (TypeNotAlreadyEquipped || item.Type == "potion"))
+        if (selectedItem == item && (TypeNotAlreadyEquipped || item.Type == "Util"))
         {
           if (item.Type == "weapon")
           {
@@ -88,7 +88,7 @@ namespace Fall2020_CSC403_Project
             Game.player.equippedArmor = item;
             this.pictureBoxArmorEquip.Show();
           }
-          else if (item.Type == "potion")
+          else if (item.Type == "Util")
           {
             Game.player.Health += item.Value;
             if (Game.player.Health > Game.player.MaxHealth)
@@ -102,7 +102,13 @@ namespace Fall2020_CSC403_Project
           newInventory.Add(item);
           listViewInventory.Items.Add(lvi);
         }
-      }
+
+        // If the character has both armor and a weapon equipped, change into the knight icon
+        if (Game.player.equippedArmor != null && Game.player.equippedWep != null)
+        {
+         FrmLevel.picPlayer.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.armorSword;
+        }
+    }
       Game.player.items = newInventory;
       listViewInventory.Refresh();
       this.SetStrengthArmorLabels();
@@ -124,6 +130,9 @@ namespace Fall2020_CSC403_Project
       Game.player.equippedWep = null;
       Game.player.AlterStrength(-value);
       this.pictureBoxSwordEquip.Hide();
+      
+      // Set the player's avatar back to normal; player must have a sword AND armor equipped to be the knight
+      FrmLevel.picPlayer.BackgroundImage = FrmLevel.picPlayerBackup.BackgroundImage;
 
       var row = new string[] { item.Name, item.Type, item.Value.ToString() };
       var lvi = new ListViewItem(row);
@@ -141,6 +150,9 @@ namespace Fall2020_CSC403_Project
       Game.player.equippedArmor = null;
       Game.player.armor -= value;
       this.pictureBoxArmorEquip.Hide();
+      
+      // Set the player's avatar back to normal; player must have a sword AND armor equipped to be the knight
+      FrmLevel.picPlayer.BackgroundImage = FrmLevel.picPlayerBackup.BackgroundImage;
 
       var row = new string[] { item.Name, item.Type, item.Value.ToString() };
       var lvi = new ListViewItem(row);

@@ -1,7 +1,5 @@
-﻿namespace Fall2020_CSC403_Project
-{
-  partial class FrmLevel
-  {
+﻿namespace Fall2020_CSC403_Project {
+  partial class FrmLevel {
     /// <summary>
     /// Required designer variable.
     /// </summary>
@@ -11,10 +9,8 @@
     /// Clean up any resources being used.
     /// </summary>
     /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
-    {
-      if (disposing && (components != null))
-      {
+    protected override void Dispose(bool disposing) {
+      if (disposing && (components != null)) {
         components.Dispose();
       }
       base.Dispose(disposing);
@@ -26,8 +22,7 @@
     /// Required method for Designer support - do not modify
     /// the contents of this method with the code editor.
     /// </summary>
-    private void InitializeComponent()
-    {
+    private void InitializeComponent() {
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLevel));
       this.lblInGameTime = new System.Windows.Forms.Label();
@@ -50,8 +45,8 @@
       this.picWall3 = new System.Windows.Forms.PictureBox();
       this.picBossKoolAid = new System.Windows.Forms.PictureBox();
       picPlayer = new System.Windows.Forms.PictureBox();
+      picPlayerBackup = new System.Windows.Forms.PictureBox();
       this.button2 = new System.Windows.Forms.Button();
-      this.pictureBox1 = new System.Windows.Forms.PictureBox();
       this.pictureBox2 = new System.Windows.Forms.PictureBox();
       ((System.ComponentModel.ISupportInitialize)(this.picWall11)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.picWall2)).BeginInit();
@@ -70,7 +65,6 @@
       ((System.ComponentModel.ISupportInitialize)(this.picWall3)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.picBossKoolAid)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(picPlayer)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
       this.SuspendLayout();
       // 
@@ -303,6 +297,10 @@
       picPlayer.TabIndex = 0;
       picPlayer.TabStop = false;
       // 
+      // picPlayerBackup
+      // 
+      picPlayerBackup.BackgroundImage = picPlayer.BackgroundImage;
+      // 
       // button2
       // 
       this.button2.BackColor = System.Drawing.Color.Lime;
@@ -317,14 +315,6 @@
       this.button2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button1_KeyPress);
       this.button2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmLevel_KeyUp);
       this.button2.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FrmLevel_PreviewKeyDown);
-      // 
-      // pictureBox1
-      // 
-      this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-      this.pictureBox1.Name = "pictureBox1";
-      this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-      this.pictureBox1.TabIndex = 20;
-      this.pictureBox1.TabStop = false;
       // 
       // pictureBox2
       // 
@@ -344,8 +334,8 @@
       this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.ClientSize = new System.Drawing.Size(1568, 894);
       this.Controls.Add(this.pictureBox2);
-      this.Controls.Add(this.pictureBox1);
       this.Controls.Add(this.button2);
+      this.Controls.Add(this.button3);
       this.Controls.Add(this.picWall11);
       this.Controls.Add(this.picWall2);
       this.Controls.Add(this.picWall8);
@@ -364,6 +354,8 @@
       this.Controls.Add(this.picWall3);
       this.Controls.Add(this.picBossKoolAid);
       this.Controls.Add(picPlayer);
+      // Saves a backup of what the player selected in "Menu.cs"
+      this.Controls.Add(picPlayerBackup);
       this.DoubleBuffered = true;
       this.Margin = new System.Windows.Forms.Padding(4);
       this.Name = "FrmLevel";
@@ -390,7 +382,6 @@
       ((System.ComponentModel.ISupportInitialize)(this.picWall3)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.picBossKoolAid)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(picPlayer)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
@@ -418,9 +409,11 @@
     private System.Windows.Forms.PictureBox picWall2;
     private System.Windows.Forms.PictureBox picWall11;
     private System.Windows.Forms.Button button2;
-    private System.Windows.Forms.PictureBox pictureBox1;
+    private System.Windows.Forms.Button button3;
     private System.Windows.Forms.PictureBox pictureBox2;
     public static System.Windows.Forms.PictureBox picPlayer;
+    // Saves a backup of what the player selected in "Menu.cs"
+    public static System.Windows.Forms.PictureBox picPlayerBackup;
   }
 }
 

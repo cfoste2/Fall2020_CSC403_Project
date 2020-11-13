@@ -12,6 +12,8 @@ namespace Fall2020_CSC403_Project.code {
     public Vector2 LastPosition { get; private set; }
     public Vector2 Position { get; private set; }
     public Collider Collider { get; private set; }
+    // Allows enemies to drop items upon defeat, and any characters on the screen (i.e.: Sword image)
+    public Item Drop { get; set; }
 
     public Character(Vector2 initPos, Collider collider) {
       Position = initPos;

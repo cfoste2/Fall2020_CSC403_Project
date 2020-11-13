@@ -40,6 +40,9 @@ namespace Fall2020_CSC403_Project {
       
       // show player level
       UpdatePlayerLevel();
+      
+      // show player healing items
+      UpdatePlayerInventoryDisplay();
     }
 
     public void SetupForBossBattle() {
@@ -76,17 +79,18 @@ namespace Fall2020_CSC403_Project {
       lblEnemyHealthFull.Text = enemy.Health.ToString();
       
       if (playerHealthPer <= .25) {
-        picPlayer2.BackgroundImage = global::Fall2020_CSC403_Project.Properties.Resources.player_lohp;
         link.lowHP = true;
+        // Change our player's image to the "player_lohp"; 
+        //      It does this because "link.lowHP" updates our FrmLevel, and FrmBattle listens for any changes made to "picPlayer"
+        picPlayer2.BackgroundImage = FrmLevel.picPlayer.BackgroundImage;
       }
-      else
-      {
+      else {
         link.lowHP = false;
-      }
+        picPlayer2.BackgroundImage = FrmLevel.picPlayer.BackgroundImage;
+     }
     }
 
     private void UpdateExpBars() {
-      //float playerExp = (player.Experience + enemy.ExperienceDrop) / (float)player.RequiredLevelExperience;
       float playerExp = (player.Experience) / (float)player.RequiredLevelExperience;
       
       const int MAX_EXPBAR_WIDTH = 226;
@@ -97,6 +101,20 @@ namespace Fall2020_CSC403_Project {
     
     private void UpdatePlayerLevel() {
       lblPlayerLevel.Text = player.Level.ToString();
+    }
+    
+    private void UpdatePlayerInventoryDisplay() {
+      int count = 0;
+      lblHealingItemsCount.Text = "0";
+      // Look through the player's item inventory
+      foreach (Item item in player.items) {
+        // If there's a healing item, increase the count
+        if (item.Type == "Util") {
+         count += 1;
+        }
+
+        lblHealingItemsCount.Text = count.ToString();
+      }
     }
 
     private void btnAttack_Click(object sender, EventArgs e) {
@@ -123,15 +141,24 @@ namespace Fall2020_CSC403_Project {
             
             // Restore the player back to max health each time they level up
             player.AlterHealth((player.MaxHealth - player.Health));
+            link.lowHP = false;
+            UpdateHealthBars();
             
           }
+        enemy.Hide();
         }
         link.running = false;
         instance = null;
-        enemy.Hide();
         Close();
       }
     }
+    
+    private void btnHeal_Click(object sender, EventArgs e) {
+      player.HealPlayerWithItem();
+      UpdateHealthBars();
+      UpdatePlayerInventoryDisplay();
+    }
+
 
     private void EnemyDamage(int amount) {
       enemy.AlterHealth((amount * healthMultEnemy));
