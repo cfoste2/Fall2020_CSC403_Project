@@ -251,7 +251,7 @@
       this.lblMaxHealth.BackColor = System.Drawing.Color.Transparent;
       this.lblMaxHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.lblMaxHealth.ForeColor = System.Drawing.Color.Black;
-      this.lblMaxHealth.Location = new System.Drawing.Point(382, 294);
+      this.lblMaxHealth.Location = new System.Drawing.Point(378, 297);
       this.lblMaxHealth.Name = "lblMaxHealth";
       this.lblMaxHealth.Size = new System.Drawing.Size(40, 31);
       this.lblMaxHealth.TabIndex = 32;

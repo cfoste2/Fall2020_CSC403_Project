@@ -112,7 +112,7 @@ namespace Fall2020_CSC403_Project
     {
       this.lblArmor.Text = Game.player.armor.ToString();
       this.lblStrength.Text = Game.player.strength.ToString();
-      this.lblHealth.Text = Game.player.Health.ToString() + "  /";
+      this.lblHealth.Text = Game.player.Health.ToString();
       this.lblMaxHealth.Text = Game.player.MaxHealth.ToString();
       this.lblLevel.Text = Game.player.Level.ToString();
     }
